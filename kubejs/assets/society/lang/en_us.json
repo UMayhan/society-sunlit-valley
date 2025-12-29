@@ -662,6 +662,8 @@
   "item.society.animal_feed_sack.description": "Too large to feed farm animals manually or using Feeding Troughs",
   "item.society.magic_shears.description": "Harvests drops from farm animals\nwith only a little discomfort!",
   "item.society.magic_shears.description.warn": "Requires animals to trust you",
+  "item.society.magic_knife.description": "Harvests Farmers Delights drops from farm animals\nwith only a medium discomfort!",
+  "item.society.magic_knife.description.warn": "Requires animals to trust you",
   "item.society.miracle_potion.description": "Used to breed farm animals",
   "item.society.friendship_necklace.description": "Used with the \"Best Friends Forever\" Husbandry skill",
   "item.society.frozen_tear.description": "Found in Slush. Chance increased with fortune",

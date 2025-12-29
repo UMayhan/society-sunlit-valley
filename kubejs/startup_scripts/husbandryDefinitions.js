@@ -21,6 +21,24 @@ const fineWoolForage = [
   },
 ];
 
+global.husbandryKnifeDefinitions = [
+  {
+    animal: "minecraft:pig",
+    drops: [
+      { item: "farmersdelight:ham", chance: 1, minHearts: 7},
+      { item: "farmersdelight:bacon", countMult: 2 , chance: 1, minHearts: 5}
+    ],
+  },
+  {
+    animal: "minecraft:cow",
+    drops: [
+      { item: "farmersdelight:beef", countMult: 2, chance: 1, minHearts: 3},
+      { item: "farmersdelight:beef_mince", countMult: 2, chance: 0.75, minHearts: 5},
+      { item: "minecraft:leather", countMult: 2, chance: 1, minHearts: 3}
+    ]
+  }
+]
+
 global.husbandryForagingDefinitions = [
   { animal: "minecraft:pig", forages: truffleForage },
   { animal: "snowpig:snow_pig", forages: truffleForage },

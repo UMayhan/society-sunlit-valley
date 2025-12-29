@@ -383,6 +383,54 @@ const handleSheepMagicShears = (e) => {
     );
   }
 };
+
+const handleMagicKnifeHarvest = (name, data, e) => {
+  const { player, level, target, item, server } = e;
+  if (player.cooldowns.isOnCooldown(item)) return;
+  const affection = data.getInt("affection");
+  let hearts = Math.floor((affection > 1000 ? 1000 : affection) / 100);
+  let errorText = "";
+  const droppedLoot = global.getMagicKnifeOutput(level, target, player, server);
+  if (droppedLoot !== -1){
+
+    server.runCommandSilent(
+      `playsound minecraft:entity.sheep.shear block @a ${player.x} ${player.y} ${player.z}`
+    );
+    global.giveExperience(server, player, "husbandry", 15);
+    for (let i = 0; i < droppedLoot.length; i++) {
+      let specialItem = level.createEntity("minecraft:item");
+      let dropItem = droppedLoot[i];
+      specialItem.x = player.x;
+      specialItem.y = player.y;
+      specialItem.z = player.z;
+      specialItem.item = dropItem;
+      specialItem.spawn();
+    }
+
+    global.addItemCooldown(player, item, 1);
+  } else {
+    errorText = Text.translatable(
+      "society.husbandry.action.cooldown_2",
+      `${name}`
+    ).getString();
+    if (hearts < 5) {
+      errorText = Text.translatable(
+        "society.husbandry.action.need_hearts",
+        `${name}`
+      ).getString();
+    }
+    if (!player.isFake())
+      server.runCommandSilent(
+        global.getEmbersTextAPICommand(
+          player.username,
+          global.animalMessageSettings,
+          40,
+          errorText
+        )
+      );
+    global.addItemCooldown(player, item, 10);
+  }
+};
 const handleMagicHarvest = (name, data, e) => {
   const { player, level, target, item, server } = e;
   if (player.cooldowns.isOnCooldown(item)) return;
@@ -538,6 +586,7 @@ const upgradeAnimal = (level, server, item, target, sound, particle) => {
     0.01
   );
 };
+
 
 global.handleHusbandryBase = (hand, player, item, target, level, server) => {
   const pet = global.checkEntityTag(target, "society:pet_animal");
@@ -776,6 +825,9 @@ global.handleHusbandryBase = (hand, player, item, target, level, server) => {
       }
       if (!lostProduce && item === "society:magic_shears") {
         handleMagicHarvest(name, data, eventData);
+      }
+      if (!lostProduce && item === "society:magic_knife"){
+        handleMagicKnifeHarvest(name, data, eventData);
       }
       if (affection > 1075) {
         // Cap affection at 1075

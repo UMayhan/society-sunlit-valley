@@ -312,6 +312,51 @@ global.handleSpecialHarvest = (
   }
 };
 
+global.getMagicKnifeOutput = (level, target, player, server) => {
+  const day = global.getDay(level);
+  const data = target.persistentData;
+  const ageLastMagicHarvested = data.getInt("ageLastMagicHarvested");
+  const freshAnimal = global.isFresh(day, ageLastMagicHarvested);
+  let affection = data.getInt("affection");
+  const type = target.type;
+  const mood = global.getOrFetchMood(level, target, day, player);
+  let hearts = Math.floor((affection > 1000 ? 1000 : affection) / 100);
+  let newLoot = [];
+
+  if (freshAnimal || day > ageLastMagicHarvested) {
+
+    data.ageLastMagicHarvested = day;
+    data.affection = affection - 15;
+
+    let quality = 0;
+
+    if (mood >= 160) {
+      quality = global.getHusbandryQuality(hearts, mood);
+    }
+
+    global.husbandryKnifeDefinitions.forEach((definition) => {
+      if (definition.animal.equals(type)){
+        definition.drops.forEach((drop) => {
+          if (hearts >= drop.minHearts && Math.random() < drop.chance) {
+            let item;
+            if(drop.itemPool){
+              item = Item.of(drop.itemPool[Math.floor(Math.random()*drop.itemPool.length)]);
+            } else {
+              item = Item.of(drop.item);
+            }
+            item = item.withCount(drop.countMult || 1);
+            if(drop.hasQuality && quality > 0) {
+              item = item.withNBT({quality_food:{effects:[],quality:quality}});
+            }
+            newLoot.push(item);
+          }
+        })
+      }
+    });
+    return newLoot;
+  } else return -1;
+};
+
 global.getMagicShearsOutput = (level, target, player, server) => {
   const day = global.getDay(level);
   const data = target.persistentData;

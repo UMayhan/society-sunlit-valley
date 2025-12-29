@@ -779,12 +779,20 @@ ItemEvents.tooltip((tooltip) => {
     Text.translatable("item.society.magic_shears.description").gray()
   );
   tooltip.add(
+    "society:magic_knife",
+    Text.translatable("item.society.magic_knife.description").gray()
+  );
+  tooltip.add(
     "vintagedelight:deluxe_burger",
     Text.translatable("tooltip.society.deluxe_burger").gray()
   );
   tooltip.add(
     "society:magic_shears",
     Text.translatable("item.society.magic_shears.description.warn").red()
+  );
+  tooltip.add(
+    "society:magic_knife",
+    Text.translatable("item.society.magic_knife.description.warn").red()
   );
   tooltip.add(
     "society:miracle_potion",
