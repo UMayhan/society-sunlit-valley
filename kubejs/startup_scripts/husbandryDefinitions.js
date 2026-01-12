@@ -23,18 +23,101 @@ const fineWoolForage = [
 
 global.husbandryKnifeDefinitions = [
   {
-    animal: "minecraft:pig",
-    drops: [
-      { item: "farmersdelight:ham", chance: 1, minHearts: 7},
-      { item: "farmersdelight:bacon", countMult: 2 , chance: 1, minHearts: 5}
-    ],
-  },
-  {
     animal: "minecraft:cow",
     drops: [
-      { item: "farmersdelight:beef", countMult: 2, chance: 1, minHearts: 3},
-      { item: "farmersdelight:beef_mince", countMult: 2, chance: 0.75, minHearts: 5},
-      { item: "minecraft:leather", countMult: 2, chance: 1, minHearts: 3}
+      { item: "minecraft:beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "minecraft:leather", countMult: 2, chance: 1, minHearts: 5},
+      { item: "farm_and_charm:minced_beef", countMult: 2, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "minecraft:goat",
+    drops: [
+      { item: "windswept:goat", countMult: 2, chance: 1, minHearts: 5},
+      { item: "minecraft:goat_horn", countMult: 2, chance: 1, minHearts: 5} //idk if this works
+    ]
+  },
+  {
+    animal: "minecraft:sheep",
+    drops: [
+      { item: "minecraft:wool", countMult: 1, chance: 1, minHearts: 5},
+      { item: "minecraft:mutton", countMult: 2, chance: 1, minHearts: 5},
+      { item: "farmersdelight:mutton_chops", countMult: 2, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "minecraft:pig",
+    drops: [
+      {item: "minecraft:porkchop", countMult: 1, chance: 1, minHearts: 5},
+      {item: "farmersdelight:ham", countMult: 1, chance: 1, minHearts: 5},
+      {item: "farmersdelight:bacon", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "snowpig:snow_pig",
+    drops: [
+      {item: "snowpig:frozen_porkchop", countMult: 1, chance: 1, minHearts: 5},
+      {item: "farmersdelight:frozen_ham", countMult: 1, chance: 1, minHearts: 5},
+      //TODO: add item and recipes {item: "snowpig:frozen_bacon", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "minecraft:rabbit",
+    drops: [
+      {item: "minecraft:rabbit", countMult: 2, chance: 1, minHearts: 5},
+      {item: "minecraft:rabbit_hide", countMult: 1, chance: 1, minHearts: 5},
+      {item: "minecraft:rabbit_foot", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "meadow:wooly_cow", //todo drop variation depending on the cow
+    drops: [
+      {item: "minecraft:egg", countMult: 2, chance: 1, minHearts: 5},
+      {item: "minecraft:wheat_seeds", countMult: 1, chance: 1, minHearts: 5},
+      {item: "farmersdelight:chicken_wings", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "meadow:wooly_sheep",
+    drops: [
+      {item: "minecraft:mutton", countMult: 1, chance: 1, minHearts: 5},
+      {item: "farmersdelight:mutton_chops", countMult: 2, chance: 1, minHearts: 5},
+      {item: "minecraft:wool", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "meadow:water_buffalo",
+    drops: [
+      {item: "meadow:raw_buffalo_meat", countMult: 1, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "minecraft:chicken",
+    drops: [
+      {item: "minecraft:chicken", countMult: 1, chance: 1, minHearts: 5},
+      {item: "farmersdelight:chicken_cuts", countMult: 2, chance: 1, minHearts: 5},
+      {item: "minecraft:feather", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "untitledduckmod:duck",
+    drops: [
+      {item: "untitledduckmod:raw_duck", countMult: 1, chance: 1, minHearts: 5},
+      {item: "untitledduckmod:duck_feather", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "untitledduckmod:goose",
+    drops: [
+      {item: "untitledduckmod:raw_goose", countMult: 1, chance: 1, minHearts: 5},
+      {item: "untitledduckmod:goose_foot", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "autumnity:turkey",
+    drops: [
+      {item: "autumnity:turkey", countMult: 1, chance: 1, minHearts: 5},
+      {item: "autumnity:turkey_piece", countMult: 2, chance: 1, minHearts: 5},
     ]
   }
 ]

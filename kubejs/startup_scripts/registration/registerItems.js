@@ -72,13 +72,14 @@ StartupEvents.registry("item", (e) => {
     .displayName("Sea Biscuit");
   e.create("society:black_opal").texture("society:item/black_opal");
   e.create("society:tiny_gnome").texture("society:item/tiny_gnome");
-  e.create("society:ancient_roe").texture("society:item/aged_roe");
+  e.create("society:ancient_roe").texture("society:item/ancient_roe");
   e.create("society:infinity_worm").texture("society:item/infinity_worm");
   e.create("society:frosted_tip").texture("society:item/frosted_tip");
   e.create("society:inserter").texture("society:item/inserter");
   e.create("society:cordycep").texture("society:item/cordycep");
   e.create("society:enkephalin").texture("society:item/enkephalin");
   e.create("society:gray_anatomy").texture("society:item/gray_anatomy");
+  e.create("society:recycled_core").texture("society:item/recycled_core");
   e.create("society:blueberry")
     .texture("society:item/blueberry")
     .food((food) => {
@@ -104,6 +105,14 @@ StartupEvents.registry("item", (e) => {
     .food((food) => {
       food.hunger(6);
       food.saturation(3);
+      food.fastToEat(true);
+    });
+  e.create("society:sparkpod")
+    .texture("society:item/sparkpod")
+    .food((food) => {
+      food.hunger(3);
+      food.saturation(1);
+      food.effect("minecraft:haste", 2000, 2, 1.0);
       food.fastToEat(true);
     });
   e.create("society:salmonberry")
@@ -134,20 +143,44 @@ StartupEvents.registry("item", (e) => {
       food.saturation(1);
       food.fastToEat(true);
     });
+  e.create("society:mossberry")
+    .texture("society:item/mossberry")
+    .food((food) => {
+      food.hunger(2);
+      food.saturation(3);
+      food.fastToEat(true);
+      food.effect("minecraft:resistance", 1200, 0, 1.0);
+    });
   e.create("society:ancient_juice")
-    .texture("society:item/ancient_juice")
+    .texture("society:item/drinks/ancient_juice")
     .food((food) => {
       food.hunger(6);
       food.fastToEat(true);
-      food.saturation(12);
+      food.saturation(4);
     })
     .useAnimation("drink");
   e.create("society:starfruit_juice")
-    .texture("society:item/starfruit_juice")
+    .texture("society:item/drinks/starfruit_juice")
     .food((food) => {
       food.hunger(6);
       food.fastToEat(true);
-      food.saturation(8);
+      food.saturation(3);
+    })
+    .useAnimation("drink");
+  e.create("society:sparkpod_juice")
+    .texture("society:item/drinks/sparkpod_juice")
+    .food((food) => {
+      food.hunger(5);
+      food.fastToEat(true);
+      food.saturation(2);
+    })
+    .useAnimation("drink");
+  e.create("society:mana_fruit_juice")
+    .texture("society:item/drinks/mana_fruit_juice")
+    .food((food) => {
+      food.hunger(6);
+      food.fastToEat(true);
+      food.saturation(42);
     })
     .useAnimation("drink");
   e.create("society:prize_ticket").texture("society:item/prize_ticket");
@@ -258,6 +291,14 @@ StartupEvents.registry("item", (e) => {
   e.create("society:botanical_tribute").texture(
     "society:item/botanical_tribute"
   );
+  e.create("society:mana_fruit")
+    .texture("society:item/mana_fruit")
+    .food((food) => {
+      food.hunger(3);
+      food.saturation(1);
+      food.effect("botania:soul_cross", 3000, 2, 1.0);
+      food.fastToEat(true);
+    });
   e.create("society:canvas")
     .texture("society:item/canvas")
     .displayName("Artisan Canvas");
@@ -283,6 +324,9 @@ StartupEvents.registry("item", (e) => {
   e.create("crabbersdelight:mana_crab_trap_bait").texture(
     "society:item/mana_crab_trap_bait"
   );
+  e.create("society:treasure_totem").texture("society:item/treasure_totem");
+  e.create("society:bubble_totem").texture("society:item/bubble_totem");
+  e.create("society:mystic_syrup").texture("society:item/mystic_syrup");
   e.create("society:net_bobber")
     .texture("society:item/net_bobber")
     .maxStackSize(1);
@@ -533,7 +577,14 @@ StartupEvents.registry("item", (e) => {
       food.saturation(4);
       food.effect("farm_and_charm:grandmas_blessing", 6000, 1, 1.0);
     });
-
+  e.create("society:mossberry_stew")
+    .texture("society:item/mossberry_stew")
+    .food((food) => {
+      food.hunger(5);
+      food.saturation(3);
+      food.fastToEat(true);
+      food.effect("minecraft:resistance", 2400, 0, 1.0);
+    });
   e.create("society:ground_cinnamon").texture("society:item/ground_cinnamon");
   e.create("society:chai_blend").texture("society:item/chai_blend");
 
@@ -558,6 +609,7 @@ StartupEvents.registry("item", (e) => {
     "mining_monthly",
     "wet_weekly",
     "combat_quarterly",
+    "alias_moss",
     "animal_fancy",
     "banana_karenina",
     "brine_and_punishment",
@@ -701,6 +753,8 @@ StartupEvents.registry("item", (e) => {
       })
       .useAnimation("drink");
   });
+  e.create("society:oil").texture("society:item/oil");
+  e.create("society:coconut_oil").texture("society:item/coconut_oil");
   e.create("society:butterfly_amber").texture("society:item/butterfly_amber");
   e.create("society:moth_pollen").texture("society:item/moth_pollen");
   e.create(`society:magic_rope`).texture(`society:item/magic_rope`);
@@ -788,87 +842,9 @@ StartupEvents.registry("item", (e) => {
     }
   });
   // Dehydrator outputs
-  e.create(`society:raisins`)
-    .texture(`society:item/raisins`)
-    .food((food) => {
-      food.hunger(9);
-      food.saturation(0.5);
-      food.fastToEat(true);
-    });
-  e.create(`society:nether_raisins`)
-    .texture(`society:item/nether_raisins`)
-    .food((food) => {
-      food.hunger(9);
-      food.saturation(0.5);
-      food.fastToEat(true);
-    });
-  e.create(`society:dried_shimmering_mushrooms`).texture(
-    `society:item/dried_shimmering_mushrooms`
-  );
-  const dehydratorMushroomMapping = [
-    { item: "minecraft:brown_mushroom", hex: 0xca9777 },
-    { item: "minecraft:red_mushroom", hex: 0xfb2929 },
-    { item: "minecraft:crimson_fungus", hex: 0xa82812 },
-    { item: "minecraft:warped_fungus", hex: 0x14b283 },
-    { item: "quark:glow_shroom", hex: 0xc1f0dc },
-    { item: "ribbits:toadstool", hex: 0xab1c2c },
-    { item: "species:alphacene_mushroom", hex: 0xecdb74 },
-    { item: "verdantvibes:bracket_mushroom", hex: 0x7d563b },
-  ];
-  global.dehydratableMushrooms.forEach((item) => {
-    const itemHex = dehydratorMushroomMapping.find(
-      (val) => val.item === item
-    )?.hex;
-    e.create(`society:dried_${item.path}`)
-      .texture(`society:item/dried_mushrooms`)
-      .color(0, itemHex)
-      .food((food) => {
-        food.hunger(9);
-        food.saturation(0.5);
-        food.fastToEat(true);
-      });
-  });
-  const dehydratorFruitMapping = [
-    { item: "minecraft:sweet_berries", hex: 0xa30700 },
-    { item: "farm_and_charm:strawberry", hex: 0xe6472d },
-    { item: "autumnity:foul_berries", hex: 0xd0af33 },
-    { item: "minecraft:apple", hex: 0xfc1c2a },
-    { item: "minecraft:melon_slice", hex: 0xbd3023 },
-    { item: "minecraft:chorus_fruit", hex: 0xa17fa0 },
-    { item: "vintagedelight:gearo_berry", hex: 0xf068df },
-    { item: "minecraft:glow_berries", hex: 0xee9444 },
-    { item: "society:blueberry", hex: 0x4c64b2 },
-    { item: "society:ancient_fruit", hex: 0x06b5c5 },
-    { item: "atmospheric:currant", hex: 0x2d2e32 },
-    { item: "atmospheric:yucca_fruit", hex: 0xb6fc67 },
-    { item: "atmospheric:orange", hex: 0xfc9919 },
-    { item: "atmospheric:passion_fruit", hex: 0xebb020 },
-    { item: "pamhc2trees:starfruititem", hex: 0xf8d035 },
-    { item: "pamhc2trees:mangoitem", hex: 0xf1bc2e },
-    { item: "pamhc2trees:lycheeitem", hex: 0xd5dce2 },
-    { item: "vinery:cherry", hex: 0xa2252e },
-    { item: "pamhc2trees:peachitem", hex: 0xeb996e },
-    { item: "pamhc2trees:plumitem", hex: 0xcc7dd1 },
-    { item: "pamhc2trees:pawpawitem", hex: 0x96bf75 },
-    { item: "pamhc2trees:bananaitem", hex: 0xe0c930 },
-    { item: "pamhc2trees:dragonfruititem", hex: 0xd5dce2 },
-    { item: "pamhc2trees:lemonitem", hex: 0xf8d035 },
-    { item: "society:salmonberry", hex: 0xe83b3b },
-    { item: "society:boysenberry", hex: 0xcf657f },
-    { item: "society:cranberry", hex: 0xb33831 },
-    { item: "society:crystalberry", hex: 0xb33831 },
-    { item: "windswept:wild_berries", hex: 0xa53982 },
-  ];
-  global.dehydratableFruits.forEach((item) => {
-    const itemHex = dehydratorFruitMapping.find(
-      (val) => val.item === item
-    )?.hex;
-    let itemId = item.path;
-    if (itemId.includes("item"))
-      itemId = itemId.substring(0, itemId.length - 4);
-    e.create(`society:dried_${itemId}`)
-      .texture(`society:item/dried_fruit`)
-      .color(0, itemHex)
+  global.dehydrated.forEach((dried) => {
+    e.create(dried.item)
+      .texture(`society:item/dried/${dried.item.path}`)
       .food((food) => {
         food.hunger(9);
         food.saturation(0.5);

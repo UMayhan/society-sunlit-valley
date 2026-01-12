@@ -85,6 +85,7 @@ global.getArtisanMachineData = (player, block, upgraded, stages) => {
   if (player.stages.has("rancher") && Math.random() <= 0.2) {
     rancherOutputCount = 2;
   }
+  let machineNbt = block.getEntityData();
   switch (block.id) {
     case "society:loom":
       machineData = {
@@ -212,6 +213,14 @@ global.getArtisanMachineData = (player, block, upgraded, stages) => {
         recipes: global.recyclingMachineRecipes,
         stageCount: 1,
         soundType: "twigs:block.basalt_bricks.fall",
+        outputMult: upgraded ? 2 : 1,
+      };
+      break;
+    case "society:oil_maker":
+      machineData = {
+        recipes: global.oilMakerRecipes,
+        stageCount: 1,
+        soundType: "supplementaries:block.jar.place",
       };
       break;
     case "society:tapper":
@@ -220,6 +229,14 @@ global.getArtisanMachineData = (player, block, upgraded, stages) => {
         stageCount: 1,
         soundType: "vinery:cabinet_close",
         outputMult: stages.has("canadian_and_famous") ? 2 : 1,
+      };
+      break;
+    case "society:mushroom_log":
+      machineData = {
+        recipes: global.mushroomLogRecipes,
+        stageCount: 1,
+        soundType: "species:block.alphacene_moss.place",
+        outputMult: nbt && nbt.data && nbt.data.baseCount ? nbt.data.baseCount : 1,
       };
       break;
     case "society:charging_rod":
@@ -234,6 +251,7 @@ global.getArtisanMachineData = (player, block, upgraded, stages) => {
 global.runArtisanHopper = (tickEvent, artisanMachinePos, player, delay) => {
   const { level, block, inventory } = tickEvent;
   const server = level.server;
+
   server.scheduleInTicks(delay, () => {
     const artisanMachine = level.getBlock(artisanMachinePos);
     const { x, y, z } = artisanMachine;

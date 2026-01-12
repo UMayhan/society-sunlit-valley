@@ -69,10 +69,8 @@ ItemEvents.tooltip((tooltip) => {
             ]);
             if (animal.name) {
               text.add(5, [
-                Text.translatable(
-                  "tooltip.society.plushies.animal_name",
-                  ` ${animal.name}`
-                ),
+                Text.translatable("tooltip.society.plushies.animal_name"),
+                `§6${String(animal.name)}`,
               ]);
             }
           } else {
@@ -170,6 +168,10 @@ ItemEvents.tooltip((tooltip) => {
     );
   });
   [
+    {
+      item: "society:alias_moss",
+      description: "Mossberries can be found in any season.",
+    },
     {
       item: "society:animal_fancy",
       description: "Increases affection gained from petting farm animals.",
@@ -418,10 +420,6 @@ ItemEvents.tooltip((tooltip) => {
     ).green()
   );
   tooltip.add(
-    "society:pink_matter",
-    Text.translatable("item.society.pink_matter.description.warn").red()
-  );
-  tooltip.add(
     "society:stone_hand",
     Text.translatable(
       "item.society.stone_hand.description",
@@ -500,9 +498,17 @@ ItemEvents.tooltip((tooltip) => {
   );
   tooltip.add(
     "society:gray_anatomy",
-    Text.green(
-      "Use on a §2Wine Keg§a to give it a 5% chance of producing a Relic Trove"
-    )
+    Text.translatable(
+      "item.society.gray_anatomy.description",
+      Text.translatable("block.society.wine_keg").darkGreen()
+    ).green()
+  );
+  tooltip.add(
+    "society:recycled_core",
+    Text.translatable(
+      "item.society.recycled_core.description",
+      Text.translatable("block.society.recycling_machine").darkGreen()
+    ).green()
   );
   tooltip.add(
     [
@@ -706,6 +712,8 @@ ItemEvents.tooltip((tooltip) => {
       "society:recycling_machine",
       "society:cheese_press",
       "society:wine_keg",
+      "society:oil_maker",
+      "society:mushroom_log",
     ],
     Text.translatable("tooltip.society.artisan_machine").white()
   );
@@ -1406,12 +1414,20 @@ ItemEvents.tooltip((tooltip) => {
   );
   // Mastery
   tooltip.add(
-    "society:net_bobber",
-    Text.translatable("item.society.net_bobber.description").gray()
+    "society:treasure_totem",
+    Text.translatable("item.society.treasure_totem.description").gray()
+  );
+  tooltip.add(
+    "society:bubble_totem",
+    Text.translatable("item.society.bubble_totem.description").gray()
   );
   tooltip.add(
     "society:needle_bobber",
     Text.translatable("item.society.needle_bobber.description").gray()
+  );
+  tooltip.add(
+    "society:net_bobber",
+    Text.translatable("item.society.net_bobber.description").gray()
   );
   tooltip.add(
     "domesticationinnovation:collar_tag",
@@ -1437,6 +1453,24 @@ ItemEvents.tooltip((tooltip) => {
     "society:sunlit_crystal",
     Text.translatable("item.society.sunlit_crystal.description").gray()
   );
+
+  tooltip.add(
+    [
+      "society:mystic_syrup",
+      "cluttered:willow_log",
+      "cluttered:willow_sapling",
+      "society:bubble_totem",
+      "society:treasure_totem",
+      "society:sparkpod_seed",
+      "society:sparkpod",
+      "society:statue_of_cravings",
+    ],
+    Text.translatable("tooltip.society.farming_mastery.required")
+  );
+  tooltip.add(
+    ["society:recycled_core", "society:moon_pylon"],
+    Text.translatable("tooltip.society.mining_mastery.required")
+  );
   tooltip.add(
     ["society:animal_cracker", "society:sunlit_crystal"],
     Text.translatable("tooltip.society.husbandry_mastery.required")
@@ -1451,6 +1485,7 @@ ItemEvents.tooltip((tooltip) => {
       "domesticationinnovation:drum",
       "domesticationinnovation:wayward_lantern",
       "domesticationinnovation:collar_tag",
+      "minecraft:enchanting_table",
     ],
     Text.translatable("tooltip.society.adventuring_mastery.required")
   );

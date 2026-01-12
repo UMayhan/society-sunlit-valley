@@ -337,8 +337,8 @@ global.addAttributesFromStages = (player, server) => {
   if (stages.has("tiller")) server.runCommandSilent(attributeCommand("crop", 1.15));
   if (stages.has("artisan")) server.runCommandSilent(attributeCommand("wood", 1.2));
   if (stages.has("artful_tycoon")) server.runCommandSilent(attributeCommand("wood", 1.8));
-  if (stages.has("gem_seller")) server.runCommandSilent(attributeCommand("gem", 1.5));
-  if (stages.has("gem_tycoon")) server.runCommandSilent(attributeCommand("gem", 2));
+  if (stages.has("gem_seller")) server.runCommandSilent(attributeCommand("gem", 1.25));
+  if (stages.has("gem_tycoon")) server.runCommandSilent(attributeCommand("gem", 1.5));
   if (stages.has("fence")) server.runCommandSilent(attributeCommand("meat", 1.5));
   if (stages.has("looting_tycoon")) server.runCommandSilent(attributeCommand("meat", 2));
 };
@@ -353,16 +353,16 @@ global.getPlushieItemNbt = (currentNbt, type, customName, animalData, animalNbt)
   newNbt.animal.type = type;
   // Aggressive with the conditionals here since invalid nbt will definitely crash the game
   if (customName) {
-    newNbt.animal.name = customName;
+    newNbt.animal.name = String(Component.of(customName).getString());
   }
   if (animalData.ageLastDroppedSpecial) {
     newNbt.animal.ageLastDroppedSpecial = animalData.ageLastDroppedSpecial;
   }
   if (animalData.ageLastMilked) {
-    newNbt.animal.ageLastDroppedSpecial = animalData.ageLastMilked;
+    newNbt.animal.ageLastMilked = animalData.ageLastMilked;
   }
   if (animalData.ageLastMagicHarvested) {
-    newNbt.animal.ageLastDroppedSpecial = animalData.ageLastMagicHarvested;
+    newNbt.animal.ageLastMagicHarvested = animalData.ageLastMagicHarvested;
   }
   if (animalData.clockwork) {
     newNbt.animal.clockwork = true;

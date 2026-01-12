@@ -43,7 +43,7 @@ global.getHusbandryQuality = (hearts, mood, milk) => {
         heartQuality = Math.floor((hearts % 11) / 2 - 2);
       }
     } else {
-      heartQuality = (hearts % 11) / 2 - 2;
+      heartQuality = Math.floor((hearts % 11) / 2 - 2);
     }
   }
   if (mood > 224) moodQuality = 3;
@@ -53,8 +53,7 @@ global.getHusbandryQuality = (hearts, mood, milk) => {
 };
 
 const resolveMilk = (hearts, mood, target, type) => {
-  let large = hearts > 5;
-  large = Math.random() < (mood + hearts * 10) / 256;
+  let large = hearts > 5 && Math.random() < (mood + hearts * 10) / 256;
   let milk;
   const warped = global.isWarpedCow(target);
   global.husbandryMilkingDefinitions.forEach((definition) => {
@@ -66,6 +65,7 @@ const resolveMilk = (hearts, mood, target, type) => {
   });
   return milk;
 };
+
 const canMilk = (data, target, day, plushieModifiers) => {
   const ageLastMilked = data.getInt("ageLastMilked");
   const dayHasPassed =
@@ -121,10 +121,9 @@ global.getMilk = (
       }
     }
     return Item.of(
-      `${
-        (player && player.stages.has("shepherd") ? 2 : 1) *
-        crackerBonus *
-        (plushieDoubleDrops ? 2 : 1)
+      `${(player && player.stages.has("shepherd") ? 2 : 1) *
+      crackerBonus *
+      (plushieDoubleDrops ? 2 : 1)
       }x ${milkId}`,
       quality > 0 ? `{quality_food:{effects:[],quality:${quality}}}` : null
     );
@@ -165,7 +164,7 @@ global.handleSpecialHarvest = (
           if (forage.itemPool) {
             resolvedItem =
               forage.itemPool[
-                Math.floor(Math.random() * forage.itemPool.length)
+              Math.floor(Math.random() * forage.itemPool.length)
               ];
           } else {
             resolvedItem = forage.item;
@@ -335,18 +334,18 @@ global.getMagicKnifeOutput = (level, target, player, server) => {
     }
 
     global.husbandryKnifeDefinitions.forEach((definition) => {
-      if (definition.animal.equals(type)){
+      if (definition.animal.equals(type)) {
         definition.drops.forEach((drop) => {
           if (hearts >= drop.minHearts && Math.random() < drop.chance) {
             let item;
-            if(drop.itemPool){
-              item = Item.of(drop.itemPool[Math.floor(Math.random()*drop.itemPool.length)]);
+            if (drop.itemPool) {
+              item = Item.of(drop.itemPool[Math.floor(Math.random() * drop.itemPool.length)]);
             } else {
               item = Item.of(drop.item);
             }
             item = item.withCount(drop.countMult || 1);
-            if(drop.hasQuality && quality > 0) {
-              item = item.withNBT({quality_food:{effects:[],quality:quality}});
+            if (drop.hasQuality && quality > 0) {
+              item = item.withNBT({ quality_food: { effects: [], quality: quality } });
             }
             newLoot.push(item);
           }
@@ -357,13 +356,23 @@ global.getMagicKnifeOutput = (level, target, player, server) => {
   } else return -1;
 };
 
-global.getMagicShearsOutput = (level, target, player, server) => {
+global.getMagicShearsOutput = (level, target, player, plushieModifiers) => {
   const day = global.getDay(level);
-  const data = target.persistentData;
+  const data = plushieModifiers ? target : target.persistentData;
   const ageLastMagicHarvested = data.getInt("ageLastMagicHarvested");
-  const freshAnimal = global.isFresh(day, ageLastMagicHarvested);
-  let affection = data.getInt("affection");
-  const mood = global.getOrFetchMood(level, target, day, player);
+  const freshAnimal = plushieModifiers
+    ? false
+    : global.isFresh(day, ageLastMagicHarvested);
+  let affection;
+  let mood;
+  if (plushieModifiers) {
+    affection = 1000;
+    mood = 256;
+  } else {
+    affection = data.getInt("affection") || 0;
+    mood = global.getOrFetchMood(level, target, day, player);
+  }
+
   let hearts = Math.floor((affection > 1000 ? 1000 : affection) / 100);
   const targetId =
     target.type === "meadow:wooly_cow"
@@ -376,20 +385,22 @@ global.getMagicShearsOutput = (level, target, player, server) => {
   if (hearts >= 5 && (freshAnimal || day > ageLastMagicHarvested)) {
     data.ageLastMagicHarvested = day;
     data.affection = affection - 7;
-    level.spawnParticles(
-      "snowyspirit:glow_light",
-      true,
-      target.x,
-      target.y + 1.5,
-      target.z,
-      0.2 * rnd(1, 4),
-      0.2 * rnd(1, 4),
-      0.2 * rnd(1, 4),
-      20,
-      2
-    );
+    if (!plushieModifiers) {
+      level.spawnParticles(
+        "snowyspirit:glow_light",
+        true,
+        target.x,
+        target.y + 1.5,
+        target.z,
+        0.2 * rnd(1, 4),
+        0.2 * rnd(1, 4),
+        0.2 * rnd(1, 4),
+        20,
+        2
+      );
+    }
     if (mood >= 160) {
-      quality = global.getHusbandryQuality(hearts, mood);
+      let quality = global.getHusbandryQuality(hearts, mood);
       for (let i = 0; i < droppedLoot.length; i++) {
         droppedLoot[i] = Item.of(
           droppedLoot[i].id,
@@ -460,13 +471,6 @@ global.getOrFetchMood = (level, target, day, player) => {
     if (debugMood) player.tell("Too long since last fed");
   }
   let requiredBlocks = 0;
-  if (global.hotMobs.includes(target.type)) {
-    requiredBlocks = getNearbyBlocks(level, target, 5, "society:hot_blocks");
-    if (requiredBlocks < 5) {
-      moodDebuffs += 32 - requiredBlocks / (5 * 32);
-      if (debugMood) player.tell("Not enough hot blocks");
-    }
-  }
   if (global.coldMobs.includes(target.type)) {
     requiredBlocks = getNearbyBlocks(level, target, 5, "society:cold_blocks");
     if (requiredBlocks < 5) {
@@ -480,7 +484,7 @@ global.getOrFetchMood = (level, target, day, player) => {
     }
   }
   if (!global.getAnimalIsNotCramped(target, 3)) {
-    moodDebuffs += 64;
+    moodDebuffs += 96;
     if (debugMood) player.tell("Cramped conditions");
   }
   if (level.raining && target.canSeeSky) {
@@ -488,7 +492,7 @@ global.getOrFetchMood = (level, target, day, player) => {
     if (debugMood) player.tell("Left outside in rain");
   }
   if (level.getBlock(target.getPos()).hasTag("create:seats")) {
-    moodDebuffs += 24;
+    moodDebuffs += 48;
     if (debugMood) player.tell("Sitting on seat");
   }
   if (debugMood) player.tell(`Mood debuffs before modifiers: ${moodDebuffs}`);
@@ -540,8 +544,7 @@ global.getPlushieModifiers = (level, data, plushieBlock) => {
       );
       newDrops.push(
         Item.of(
-          `${qualityMult * 8}x ${
-            nearbyLogs[Math.floor(Math.random() * nearbyLogs.length)]
+          `${qualityMult * 8}x ${nearbyLogs[Math.floor(Math.random() * nearbyLogs.length)]
           }`
         )
       );
@@ -717,7 +720,41 @@ global.executePlushieHusbandry = (
       },
     },
   });
-
+  if (item === "society:magic_shears") {
+    const droppedLoot = global.getMagicShearsOutput(
+      level,
+      animal,
+      player,
+      plushieMods
+    );
+    if (droppedLoot !== -1) {
+      server.runCommandSilent(
+        `playsound minecraft:entity.sheep.shear block @a ${player.x} ${player.y} ${player.z}`
+      );
+      for (let i = 0; i < droppedLoot.length; i++) {
+        let specialItem = level.createEntity("minecraft:item");
+        let dropItem = droppedLoot[i];
+        specialItem.x = player.x;
+        specialItem.y = player.y;
+        specialItem.z = player.z;
+        specialItem.item = dropItem;
+        specialItem.spawn();
+      }
+      level.spawnParticles(
+        "snowyspirit:glow_light",
+        true,
+        block.x,
+        block.y + 0.5,
+        block.z,
+        0.2 * rnd(1, 4),
+        0.2 * rnd(1, 4),
+        0.2 * rnd(1, 4),
+        20,
+        2
+      );
+      global.addItemCooldown(player, item, 1);
+    }
+  }
   block.setEntityData(nbt);
   if (plushieMods.resetDay) {
     let changed = false;

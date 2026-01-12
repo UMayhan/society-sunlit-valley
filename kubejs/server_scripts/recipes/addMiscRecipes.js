@@ -70,6 +70,11 @@ ServerEvents.recipes((e) => {
     "minecraft:bucket",
   ]);
   e.shapeless("minecraft:magenta_dye", ["windswept:lavender"]);
+  e.shapeless("create:tree_fertilizer", [
+    "4x farmersdelight:straw",
+    "4x society:sap",
+    "twigs:pebble",
+  ]);
   e.shapeless("3x society:prismatic_shard", [
     "society:token_of_unity",
     "society:prismatic_shard",
@@ -137,6 +142,18 @@ ServerEvents.recipes((e) => {
     "moreminecarts:chiseled_organic_glass",
     "moreminecarts:greenhouse_glass_slab"
   );
+  // Mastery
+  e.shaped("society:treasure_totem", ["fmf", "fsf", "fmf"], {
+    s: "society:mystic_syrup",
+    m: "#society:mineral",
+    f: "meadow:fire_log",
+  });
+  e.shaped("society:bubble_totem", ["fjf", "fsf", "fSf"], {
+    s: "society:mystic_syrup",
+    j: "society:ocean_jelly",
+    S: "unusualfishmod:raw_sneep_snorp",
+    f: "meadow:fire_log",
+  });
   // Earth Crystal
   e.shaped("society:tapper", [" C ", "lwl", " e "], {
     w: "meadow:wooden_bucket",
@@ -273,6 +290,13 @@ ServerEvents.recipes((e) => {
     C: "society:jade",
     f: "society:fire_quartz",
   });
+  e.shaped("society:oil_maker", ["ccj", "ccs", "fgf"], {
+    c: "minecraft:copper_block",
+    g: "minecraft:gold_block",
+    j: "society:jade",
+    s: "supplementaries:jar",
+    f: "meadow:fire_log",
+  });
   e.shaped("society:preserves_jar", ["LLL", "LbL", "CiC"], {
     b: "minecraft:barrel",
     L: "meadow:fire_log",
@@ -296,6 +320,12 @@ ServerEvents.recipes((e) => {
     L: "meadow:fire_log",
     f: "society:fire_quartz",
     I: "minecraft:iron_block",
+  });
+  e.shaped("society:mushroom_log", ["LLL", "LML", "mPm"], {
+    L: "meadow:fire_log",
+    P: "society:mossberry_preserves",
+    m: "society:mossberry",
+    M: "farmersdelight:rich_soil",
   });
   // Battery
   e.shaped("society:crystalarium", ["III", "SDS", "ibi"], {

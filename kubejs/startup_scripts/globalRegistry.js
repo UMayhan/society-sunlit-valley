@@ -77,8 +77,8 @@ global.ore = [
   { item: "etcetera:raw_bismuth_block", value: 288 },
   { item: "oreganized:raw_lead", value: 48 },
   { item: "oreganized:raw_lead_block", value: 432 },
-  { item: "society:sparkstone", value: 64 },
-  { item: "society:sparkstone_block", value: 576 },
+  { item: "society:sparkstone", value: 16 },
+  { item: "society:sparkstone_block", value: 144 },
   { item: "oreganized:raw_silver", value: 64 },
   { item: "oreganized:raw_silver_block", value: 576 },
   { item: "minecraft:diamond", value: 256 },
@@ -371,22 +371,22 @@ global.crops = [
   { item: "beachparty:coconut", value: 8 },
   { item: "minecraft:apple", value: 8 },
   { item: "vinery:apple_bag", value: 72 },
-  { item: "botania:white_mushroom", value: 12 },
-  { item: "botania:orange_mushroom", value: 12 },
-  { item: "botania:magenta_mushroom", value: 12 },
-  { item: "botania:light_blue_mushroom", value: 12 },
-  { item: "botania:yellow_mushroom", value: 12 },
-  { item: "botania:lime_mushroom", value: 12 },
-  { item: "botania:pink_mushroom", value: 12 },
-  { item: "botania:black_mushroom", value: 12 },
-  { item: "botania:red_mushroom", value: 12 },
-  { item: "botania:green_mushroom", value: 12 },
-  { item: "botania:brown_mushroom", value: 12 },
-  { item: "botania:blue_mushroom", value: 12 },
-  { item: "botania:purple_mushroom", value: 12 },
-  { item: "botania:cyan_mushroom", value: 12 },
-  { item: "botania:light_gray_mushroom", value: 12 },
-  { item: "botania:gray_mushroom", value: 12 },
+  { item: "botania:white_mushroom", value: 24 },
+  { item: "botania:orange_mushroom", value: 24 },
+  { item: "botania:magenta_mushroom", value: 24 },
+  { item: "botania:light_blue_mushroom", value: 24 },
+  { item: "botania:yellow_mushroom", value: 24 },
+  { item: "botania:lime_mushroom", value: 24 },
+  { item: "botania:pink_mushroom", value: 24 },
+  { item: "botania:black_mushroom", value: 24 },
+  { item: "botania:red_mushroom", value: 24 },
+  { item: "botania:green_mushroom", value: 24 },
+  { item: "botania:brown_mushroom", value: 24 },
+  { item: "botania:blue_mushroom", value: 24 },
+  { item: "botania:purple_mushroom", value: 24 },
+  { item: "botania:cyan_mushroom", value: 24 },
+  { item: "botania:light_gray_mushroom", value: 24 },
+  { item: "botania:gray_mushroom", value: 24 },
   { item: "minecraft:red_mushroom", value: 8 },
   { item: "farmersdelight:red_mushroom_colony", value: 48 },
   { item: "minecraft:brown_mushroom", value: 8 },
@@ -396,6 +396,8 @@ global.crops = [
   { item: "minecraft:warped_fungus", value: 16 },
   { item: "mynethersdelight:warped_fungus_colony", value: 96 },
   { item: "verdantvibes:bracket_mushroom", value: 32 },
+  { item: "cluttered:blue_roundhead", value: 140 },
+  { item: "cluttered:fly_agaric", value: 140 },
   { item: "species:alphacene_mushroom", value: 32 },
   { item: "minecraft:bamboo_block", value: 9 },
   { item: "society:sturdy_bamboo_block", value: 81 },
@@ -418,6 +420,7 @@ global.crops = [
   { item: "society:crystalberry_crate", value: 198 },
   { item: "society:blueberry", value: 24 },
   { item: "society:blueberry_crate", value: 216 },
+  { item: "society:mossberry", value: 96 },
   { item: "farmersdelight:cabbage", value: 70 },
   { item: "farmersdelight:cabbage_crate", value: 630 },
   { item: "minecraft:wheat", value: 46 },
@@ -457,6 +460,10 @@ global.crops = [
   { item: "minecraft:pitcher_plant", value: 64 },
   { item: "society:ancient_fruit", value: 128 },
   { item: "society:ancient_fruit_crate", value: 1152 },
+  { item: "society:sparkpod", value: 100 },
+  { item: "society:sparkpod_crate", value: 900 },
+  { item: "society:mana_fruit", value: 256 },
+  { item: "society:mana_fruit_crate", value: 1024 },
   { item: "atmospheric:aloe_leaves", value: 16 },
   { item: "atmospheric:aloe_bundle", value: 144 },
   // Tree fruits
@@ -559,6 +566,7 @@ global.animalProducts = [
   { item: "minecraft:honey_block", value: 24 },
   { item: "minecraft:honeycomb", value: 4 },
   { item: "minecraft:honeycomb_block", value: 16 },
+  { item: "golemoverhaul:honey_blob", value: 72 },
   { item: "buzzier_bees:bee_bottle", value: 16 },
   { item: "etcetera:cotton_flower", value: 24 },
   { item: "society:butterfly_amber", value: 64 },
@@ -629,6 +637,8 @@ global.fruits = [
   { item: "pamhc2trees:pawpawitem", value: 80 },
   { item: "pamhc2trees:plumitem", value: 96 },
   { item: "society:ancient_fruit", value: 128 },
+  { item: "society:mana_fruit", value: 256 },
+  { item: "society:sparkpod", value: 100 },
   { item: "atmospheric:orange", value: 96 },
   { item: "pamhc2trees:dragonfruititem", value: 128 },
   { item: "atmospheric:passion_fruit", value: 128 },
@@ -639,6 +649,7 @@ global.fruits = [
   { item: "society:cranberry", value: 18 },
   { item: "society:crystalberry", value: 22 },
   { item: "windswept:wild_berries", value: 8 },
+  { item: "society:mossberry", value: 96 },
 ];
 global.preserves = [
   { item: "society:red_grape_preserves", value: 124 },
@@ -690,8 +701,10 @@ global.mushrooms = [
   { item: "species:alphacene_mushroom", value: 32 },
   { item: "quark:glow_shroom", value: 24 },
   { item: "ribbits:toadstool", value: 20 },
+  { item: "cluttered:blue_roundhead", value: 140 },
+  { item: "cluttered:fly_agaric", value: 140 },
   // Tag equivalent
-  { item: "botania:shimmering_mushrooms", value: 16 },
+  { item: "botania:shimmering_mushrooms", value: 24 },
 ];
 global.mushrooms.forEach((shroom) => {
   let itemId = shroom.item.path;
@@ -738,10 +751,11 @@ global.artisanGoods = [
   { item: "society:penguin_mayonnaise", value: 768 },
   { item: "society:flamingo_mayonnaise", value: 1200 },
   { item: "society:cruncher_mayonnaise", value: 2048 },
-  { item: "society:oak_resin", value: 48 },
+  { item: "society:oak_resin", value: 128 },
   { item: "society:maple_syrup", value: 192 },
-  { item: "society:pine_tar", value: 48 },
-  { item: "society:sap", value: 20 },
+  { item: "society:mystic_syrup", value: 1000 },
+  { item: "society:pine_tar", value: 128 },
+  { item: "society:sap", value: 4 },
   { item: "society:rubber", value: 30 },
   { item: "society:aged_cheese_block", value: 576 },
   { item: "society:aged_goat_cheese_block", value: 3456 },
@@ -759,8 +773,36 @@ global.artisanGoods = [
   { item: "society:double_aged_grain_cheese_block", value: 2376 },
   { item: "society:double_aged_amethyst_cheese_block", value: 15552 },
   { item: "society:double_aged_tribull_cheese_wheel", value: 20736 },
+  { item: "society:truffle_oil", value: 1536 },
+  { item: "society:oil", value: 112 },
+  { item: "society:coconut_oil", value: 64 },
 ];
 
+const cheeses = [
+  // Values shouldn't be multiplied for balance
+  { item: "meadow:piece_of_sheep_cheese", value: 24 },
+  { item: "meadow:sheep_cheese_block", value: 96 },
+  { item: "meadow:piece_of_cheese", value: 48 },
+  { item: "meadow:cheese_block", value: 192 },
+  { item: "meadow:piece_of_grain_cheese", value: 66 },
+  { item: "meadow:grain_cheese_block", value: 264 },
+  { item: "meadow:piece_of_buffalo_cheese", value: 192 },
+  { item: "meadow:buffalo_cheese_block", value: 768 },
+  { item: "meadow:piece_of_goat_cheese", value: 288 },
+  { item: "meadow:goat_cheese_block", value: 1152 },
+  { item: "meadow:piece_of_warped_cheese", value: 288 },
+  { item: "meadow:warped_cheese_block", value: 1152 },
+  { item: "meadow:piece_of_amethyst_cheese", value: 432 },
+  { item: "meadow:amethyst_cheese_block", value: 1728 },
+  { item: "farmlife:tribull_cheese_wedge", value: 576 },
+  { item: "farmlife:tribull_cheese_wheel", value: 2304 },
+];
+cheeses.forEach((recipe) => {
+  global.artisanGoods.push({
+    item: recipe.item,
+    value: recipe.value,
+  });
+});
 // Ice value = 8
 // Snow value = 2
 global.cocktails = [
@@ -930,6 +972,10 @@ global.wines = [
   { item: "society:ancient_cider", value: 3424 },
   { item: "society:star_coquito", value: 6000 },
   { item: "society:nutty_basil", value: 624 },
+  { item: 'society:violet_moon', value: 1488 },
+  { item: 'society:laputa_franc', value: 3648 },
+  { item: 'society:sparkling_le_roy',  value: 2872 },
+  { item: 'society:mana_king', value: 3296 },
 ];
 
 global.wines.forEach((wine) => {
@@ -1026,6 +1072,7 @@ miscAged.forEach((brew) => {
 global.cooking = [];
 // Raw ingredient calculation. Multiplier added before pushing to global.cooking
 const craftingTableRecipes = [
+  { item: "vintagedelight:honey_mason_jar", value: 24 },
   { item: "veggiesdelight:zucchini_sandwich", value: 134 },
   { item: "veggiesdelight:turnip_salad", value: 60 },
   { item: "veggiesdelight:broccoli_salad", value: 92 },
@@ -1164,33 +1211,6 @@ craftingTableRecipes.forEach((recipe) => {
   });
 });
 
-const cheeses = [
-  // Values shouldn't be multiplied for balance
-  { item: "vintagedelight:honey_mason_jar", value: 48 },
-  { item: "meadow:piece_of_sheep_cheese", value: 24 },
-  { item: "meadow:sheep_cheese_block", value: 96 },
-  { item: "meadow:piece_of_cheese", value: 48 },
-  { item: "meadow:cheese_block", value: 192 },
-  { item: "meadow:piece_of_grain_cheese", value: 66 },
-  { item: "meadow:grain_cheese_block", value: 264 },
-  { item: "meadow:piece_of_buffalo_cheese", value: 192 },
-  { item: "meadow:buffalo_cheese_block", value: 768 },
-  { item: "meadow:piece_of_goat_cheese", value: 288 },
-  { item: "meadow:goat_cheese_block", value: 1152 },
-  { item: "meadow:piece_of_warped_cheese", value: 288 },
-  { item: "meadow:warped_cheese_block", value: 1152 },
-  { item: "meadow:piece_of_amethyst_cheese", value: 432 },
-  { item: "meadow:amethyst_cheese_block", value: 1728 },
-  { item: "farmlife:tribull_cheese_wedge", value: 576 },
-  { item: "farmlife:tribull_cheese_wheel", value: 2304 },
-];
-cheeses.forEach((recipe) => {
-  global.cooking.push({
-    item: recipe.item,
-    value: recipe.value,
-  });
-});
-
 // Raw ingredient calculation. Multiplier added before pushing to global.cooking
 let fermentingRecipes = [
   { item: "windswept:pinecone_jam_bottle", value: 212 },
@@ -1199,7 +1219,6 @@ let fermentingRecipes = [
   { item: "vintagedelight:century_egg", value: 136 },
   { item: "vintagedelight:surstromming", value: 48 },
   { item: "vintagedelight:pickled_pepper", value: 38 },
-  { item: "society:truffle_oil", value: 2752 },
   { item: "vintagedelight:overnight_oats", value: 120 },
   { item: "vintagedelight:pickled_beetroot", value: 26 },
   { item: "vintagedelight:pickled_egg", value: 16 },
@@ -1332,6 +1351,7 @@ cakingStationRecipes.forEach((recipe) => {
   });
 });
 const cookingPotRecipes = [
+  { item: "society:mossberry_stew", value: 288 },
   { item: "windswept:goat_stew", value: 190 },
   { item: "windswept:chestnut_soup", value: 80 },
   { item: "windswept:christmas_pudding", value: 160 },
@@ -1395,7 +1415,7 @@ const cookingPotRecipes = [
   { item: "bakery:glowberry_jam", value: 27 },
   { item: "farm_and_charm:simple_tomato_soup", value: 55 },
   { item: "bakery:sweetberry_jam", value: 7 },
-  { item: "bakery:chocolate_donut", value: 3144 },
+  { item: "bakery:chocolate_donut", value: 427 },
   { item: "farmersdelight:vegetable_noodles", value: 136 },
   { item: "vintagedelight:pad_thai", value: 372 },
   { item: "farm_and_charm:potato_soup", value: 36 },

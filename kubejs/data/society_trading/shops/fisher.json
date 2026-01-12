@@ -39,7 +39,7 @@
         "item": "numismatics:sun",
         "count": 24
       },
-      "numismatics_cost": 98304,
+      "numismatics_cost": 73728,
       "trade_id": "fisherman_lava_fishing_rod_rod_for_sun"
     },
     {
@@ -337,9 +337,9 @@
       },
       "request": {
         "item": "numismatics:sun",
-        "count": 32
+        "count": 16
       },
-      "numismatics_cost": 131072,
+      "numismatics_cost": 65536,
       "trade_id": "minecraft:toolsmith_neptunium_upgrade_smithing_template_for_crown"
     },
     {
