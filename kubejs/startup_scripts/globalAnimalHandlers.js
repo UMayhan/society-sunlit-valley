@@ -339,7 +339,16 @@ global.getMagicKnifeOutput = (level, target, player, server) => {
     }
 
     global.husbandryKnifeDefinitions.forEach((definition) => {
-      if (definition.animal.equals(type)) {
+      let isType = definition.animal.equals(type);
+      if (isType && (definition.type != null || definition.variant != null)) {
+        if (type == "minecraft:mooshroom") {
+          isType = target.getNbt().Type == definition.type;
+        }
+        if (type == "meadow:wooly_cow"){
+          isType = (target.getNbt().Variant % 3) == definition.variant;
+        }
+      }
+      if (isType) {
         definition.drops.forEach((drop) => {
           if (hearts >= drop.minHearts && Math.random() < drop.chance) {
             let item;
@@ -548,7 +557,7 @@ global.getPlushieModifiers = (level, data, plushieBlock) => {
       break;
     case 1:
       // Woodsy
-      let nearbyLogs = global.getTaggedBlocksInRadius(
+      { let nearbyLogs = global.getTaggedBlocksInRadius(
         level,
         "society:raw_logs",
         plushieBlock,
@@ -561,7 +570,7 @@ global.getPlushieModifiers = (level, data, plushieBlock) => {
           }`
         )
       );
-      break;
+      break; }
     case 2:
       // Eldritch
       newDrops.push(Item.of(`${qualityMult}x oreganized:raw_silver`));

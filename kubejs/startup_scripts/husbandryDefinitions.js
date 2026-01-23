@@ -25,6 +25,7 @@ const fineWoolForage = [
   },
 ];
 
+//TODO: revision chances and count of dropped items for the animals as well as minHearts for the drop
 global.husbandryKnifeDefinitions = [
   {
     animal: "minecraft:cow",
@@ -38,13 +39,13 @@ global.husbandryKnifeDefinitions = [
     animal: "minecraft:goat",
     drops: [
       { item: "windswept:goat", countMult: 2, chance: 1, minHearts: 5},
-      { item: "minecraft:goat_horn", countMult: 2, chance: 1, minHearts: 5} //idk if this works
+      //TODO: needs testing; idk if this works
+      { item: "minecraft:goat_horn", countMult: 2, chance: 1, minHearts: 5}
     ]
   },
   {
     animal: "minecraft:sheep",
     drops: [
-      { item: "minecraft:wool", countMult: 1, chance: 1, minHearts: 5},
       { item: "minecraft:mutton", countMult: 2, chance: 1, minHearts: 5},
       { item: "farmersdelight:mutton_chops", countMult: 2, chance: 1, minHearts: 5}
     ]
@@ -62,7 +63,8 @@ global.husbandryKnifeDefinitions = [
     drops: [
       {item: "snowpig:frozen_porkchop", countMult: 1, chance: 1, minHearts: 5},
       {item: "farmersdelight:frozen_ham", countMult: 1, chance: 1, minHearts: 5},
-      //TODO: add item and recipes {item: "snowpig:frozen_bacon", countMult: 1, chance: 1, minHearts: 5},
+      //TODO: add item and recipes
+      // {item: "snowpig:frozen_bacon", countMult: 1, chance: 1, minHearts: 5},
     ]
   },
   {
@@ -74,11 +76,31 @@ global.husbandryKnifeDefinitions = [
     ]
   },
   {
-    animal: "meadow:wooly_cow", //todo drop variation depending on the cow
+    animal: "meadow:wooly_cow",
+    variant: 0,
     drops: [
-      {item: "minecraft:egg", countMult: 2, chance: 1, minHearts: 5},
-      {item: "minecraft:wheat_seeds", countMult: 1, chance: 1, minHearts: 5},
-      {item: "farmersdelight:chicken_wings", countMult: 1, chance: 1, minHearts: 5},
+      //todo: find better wool for this
+      { item: "minecraft:orange_wool", countMult: 1, chance: 1, minHearts: 0 },
+      { item: "minecraft:beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "farm_and_charm:minced_beef", countMult: 2, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "meadow:wooly_cow",
+    variant: 1,
+    drops: [
+      { item: "meadow:umbra_wool", countMult: 1, chance: 1, minHearts: 0},
+      { item: "minecraft:beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "farm_and_charm:minced_beef", countMult: 2, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "meadow:wooly_cow",
+    variant: 2,
+    drops: [
+      { item: "meadow:warped_wool", countMult: 1, chance: 1, minHearts: 0  },
+      { item: "minecraft:beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "farm_and_charm:minced_beef", countMult: 2, chance: 1, minHearts: 5}
     ]
   },
   {
@@ -86,7 +108,6 @@ global.husbandryKnifeDefinitions = [
     drops: [
       {item: "minecraft:mutton", countMult: 1, chance: 1, minHearts: 5},
       {item: "farmersdelight:mutton_chops", countMult: 2, chance: 1, minHearts: 5},
-      {item: "minecraft:wool", countMult: 1, chance: 1, minHearts: 5},
     ]
   },
   {
@@ -100,14 +121,12 @@ global.husbandryKnifeDefinitions = [
     drops: [
       {item: "minecraft:chicken", countMult: 1, chance: 1, minHearts: 5},
       {item: "farmersdelight:chicken_cuts", countMult: 2, chance: 1, minHearts: 5},
-      {item: "minecraft:feather", countMult: 1, chance: 1, minHearts: 5},
     ]
   },
   {
     animal: "untitledduckmod:duck",
     drops: [
       {item: "untitledduckmod:raw_duck", countMult: 1, chance: 1, minHearts: 5},
-      {item: "untitledduckmod:duck_feather", countMult: 1, chance: 1, minHearts: 5},
     ]
   },
   {
@@ -123,7 +142,133 @@ global.husbandryKnifeDefinitions = [
       {item: "autumnity:turkey", countMult: 1, chance: 1, minHearts: 5},
       {item: "autumnity:turkey_piece", countMult: 2, chance: 1, minHearts: 5},
     ]
-  }
+  },
+  {
+    animal: "minecraft:frog",
+    drops: [
+      {item: "crabbersdelight:raw_frog_leg", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "atmospheric:cochineal",
+    drops: [
+      {item: "atmospheric:cochineal_husk", countMult: 1, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "minecraft:squid",
+    drops: [
+      {item: "crabbersdelight:raw_squid_tentacles", countMult: 1, chance: 1, minHearts: 5},
+      //TODO: not sure about this item drop {item: "minecraft:ink_sac", countMult: 1, chance: 1, minHearts: 8},
+    ]
+  },
+  {
+    animal: "minecraft:glow_squid",
+    drops: [
+      {item: "crabbersdelight:raw_glow_squid_tentacles", countMult: 1, chance: 1, minHearts: 5},
+      //TODO: not sure about this item drop {item: "minecraft:glow_ink_sac", countMult: 1, chance: 1, minHearts: 8},
+    ]
+  },
+  {
+    animal: "minecraft:mooshroom",
+    type: "red",
+    drops: [
+      { item: "minecraft:beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "farm_and_charm:minced_beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "minecraft:red_mushroom", countMult: 4, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "minecraft:mooshroom",
+    type: "brown",
+    drops: [
+      { item: "minecraft:beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "farm_and_charm:minced_beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "minecraft:brown_mushroom", countMult: 4, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "buzzier_bees:moobloom",
+    drops: [
+      { item: "minecraft:beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "farm_and_charm:minced_beef", countMult: 2, chance: 1, minHearts: 5},
+      { item: "buzzier_bees:buttercup", countMult: 4, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "etcetera:chapple",
+    drops: [
+      {item: "minecraft:chicken", countMult: 1, chance: 1, minHearts: 5},
+      {item: "farmersdelight:chicken_cuts", countMult: 2, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "farmlife:domestic_tribull",
+    drops: [
+      {item: "farmlife:tribull_shank", countMult: 2, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "wildernature:minisheep",
+    drops: [
+      { item: "minecraft:mutton", countMult: 2, chance: 1, minHearts: 5},
+      { item: "farmersdelight:mutton_chops", countMult: 2, chance: 1, minHearts: 5}
+    ]
+  },
+  {
+    animal: "wildernature:deer",
+    drops: [
+      { item: "wildernature:venison", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "wildernature:bison",
+    drops: [
+      { item: "wildernature:bison_meat", countMult: 1, chance: 1, minHearts: 5},
+      { item: "wildernature:bison_horn", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  {
+    animal: "farmlife:galliraptor",
+    drops: [
+      { item: "farmlife:galliraptor", countMult: 1, chance: 1, minHearts: 5},
+    ]
+  },
+  // TODO: not sure about those loot tables
+  //  {
+  //   animal: "minecraft:panda",
+  //   drops: [
+  //     {item: "twigs:bamboo_leaves", countMult: 1, chance: 1, minHearts: 5},
+  //     {item: "minecraft:bamboo", countMult: 1, chance: 1, minHearts: 5},
+  //   ]},{
+  //   animal: "species:mammutilation",
+  //   drops: [
+  //     {item: "species:frozen_hair", countMult: 2, chance: 1, minHearts: 5},
+  //     {item: "species:frozen_meat", countMult: 2, chance: 1, minHearts: 5},
+  //   ]},
+  //TODO: No loot ?? {
+  //   animal: "wildernature:raccoon",
+  //   drops: [] }, {
+  //   animal: "minecraft:sniffer",
+  //   drops: [] },{
+  //   animal: "crittersandcompanions:red_panda",
+  //   drops: [] },{
+  //   animal: "windswept:frostbiter",
+  //   drops: [] },{
+  //   animal: "autumnity:snail",
+  //   drops: [] },{
+  //   animal: "snuffles:snuffle",
+  //   drops: []},{
+  //   animal: "species:goober",
+  //   drops: [] }, {
+  //   animal: "wildernature:squirrel",
+  //   drops: [] }, {
+  //   animal: "wildernature:penguin",
+  //   drops: [] }, {
+  //   animal: "wildernature:flamingo",
+  //   drops: [] }, {
+  //   animal: "species:wraptor",
+  //   drops: [] },
 ]
 
 global.husbandryForagingDefinitions = [
