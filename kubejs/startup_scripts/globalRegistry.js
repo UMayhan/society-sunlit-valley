@@ -851,7 +851,6 @@ global.herbalBrews = [
   { item: "society:mocha", value: 512 },
   { item: "society:dirty_chai", value: 5574 },
   { item: "society:bowl_of_soul", value: 240 },
-  { item: "society:truffle_tea", value: 2048 },
 ];
 // Logs
 global.logs = [
@@ -1362,7 +1361,6 @@ const cookingPotRecipes = [
   { item: "veggiesdelight:rice_and_vegetables", value: 221 },
   { item: "veggiesdelight:sweet_potato_pancakes", value: 336 },
   { item: "society:mossberry_stew", value: 288 },
-  { item: "society:mossberry_stew", value: 288 },
   { item: "windswept:goat_stew", value: 190 },
   { item: "windswept:chestnut_soup", value: 80 },
   { item: "windswept:christmas_pudding", value: 160 },
@@ -1700,6 +1698,7 @@ global.miscAdventurer = [
   { item: "windswept:elder_feather", value: 128 },
   { item: "windswept:frozen_branch", value: 200 },
   { item: "crittersandcompanions:silk", value: 128 },
+  { item: "crittersandcompanions:dragonfly_wing", value: 3300 },
   { item: "society:river_jelly", value: 128 },
   { item: "society:ocean_jelly", value: 256 },
   { item: "society:nether_jelly", value: 512 },

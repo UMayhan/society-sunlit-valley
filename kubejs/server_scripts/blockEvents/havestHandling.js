@@ -10,6 +10,7 @@ const deniedCrops = [
   "minecraft:pumpkin_stem",
   "minecraft:cocoa",
   "supplementaries:flax",
+  "society:mana_fruit_crop"
 ];
 const allowedBonemealCrops = [
   "minecraft:crimson_fungus",
@@ -21,7 +22,7 @@ const reseedableCrops = [
   "farm_and_charm:onion",
   "veggiesdelight:sweet_potato",
   "vintagedelight:peanut",
-  "veggiesdelight:garlic_crop",
+  "veggiesdelight:garlic_clove"
 ];
 BlockEvents.rightClicked((e) => {
   const { block, player, server, hand, item, level } = e;
@@ -40,6 +41,7 @@ BlockEvents.rightClicked((e) => {
       if (
         block.hasTag("minecraft:crops") ||
         block.hasTag("minecraft:saplings") ||
+        block.hasTag("vinery:lattice") ||
         block.hasTag("farmersdelight:wild_crops") ||
         block.hasTag("farm_and_charm:wild_crops") ||
         block.hasTag("sereneseasons:summer_crops") ||
@@ -115,7 +117,7 @@ BlockEvents.rightClicked((e) => {
         radius = 2;
       for (let pos of BlockPos.betweenClosed(
         new BlockPos(block.x - radius, block.y, block.z - radius),
-        [block.x + radius, block.y, block.z + radius]
+        [block.x + radius, block.y, block.z + radius],
       )) {
         checkBlocked = level.getBlock(pos);
         blockState = level.getBlockState(pos);
@@ -178,16 +180,16 @@ BlockEvents.rightClicked("society:mana_fruit_crop", (e) => {
       block.popItemFromFace(
         Item.of(
           `${count}x society:mana_fruit`,
-          `{quality_food:{effects:[],quality:${quality}}}`
+          `{quality_food:{effects:[],quality:${quality}}}`,
         ),
-        "up"
+        "up",
       );
     } else {
       block.popItemFromFace(Item.of(`${count}x society:mana_fruit`), "up");
     }
     player.swing();
     server.runCommandSilent(
-      `playsound minecraft:block.grass.break block @a ${block.x} ${block.y} ${block.z} 0.5`
+      `playsound minecraft:block.grass.break block @a ${block.x} ${block.y} ${block.z} 0.5`,
     );
   }
 });

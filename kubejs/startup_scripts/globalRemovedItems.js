@@ -1,4 +1,6 @@
 global.removedItems = [
+  "minecraft:brown_egg",
+  "minecraft:blue_egg",
   // 4.1 TODO - rename to new item
   "veggiesdelight:lasagna_pan",
   "cluttered:pastel_bunny_plushie",
@@ -119,7 +121,6 @@ global.removedItems = [
   "crittersandcompanions:gold_dragonfly_armor",
   "crittersandcompanions:iron_dragonfly_armor",
   "crittersandcompanions:dragonfly_spawn_egg",
-  "crittersandcompanions:dragonfly_wing",
   "crittersandcompanions:pearl",
   "crittersandcompanions:pearl_necklace_1",
   "crittersandcompanions:pearl_necklace_2",
@@ -497,6 +498,7 @@ global.removedItems = [
   "quality_food:diamond_overlay",
   "moonlight:placeable_item",
   "citadel:effect_item",
+  "citadel:fancy_item",
   "citadel:citadel_book",
   "citadel:debug",
   "displaydelight:beetroot_soup",
@@ -523,6 +525,15 @@ global.removedItems = [
   "displaydelight:baked_cod_stew",
   "displaydelight:noodle_soup",
   "displaydelight:pumpkin_soup",
+  "displaydelight:glow_berry_custard",
+  "displaydelight:fruit_salad",
+  "displaydelight:cooked_rice",
+  "displaydelight:mixed_salad",
+  "displaydelight:beef_stew",
+  "displaydelight:chicken_soup",
+  "displaydelight:vegetable_soup",
+  "displaydelight:fish_stew",
+  "displaydelight:fried_rice",
   // Botania
   "botania:fertilizer",
   "botania:floating_pollidisiac",

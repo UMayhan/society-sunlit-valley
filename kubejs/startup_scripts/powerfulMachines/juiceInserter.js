@@ -9,7 +9,7 @@ StartupEvents.registry("block", (event) => {
     .item((item) => {
       item.tooltip(Text.translatable("block.society.juice_inserter.description").gray());
       item.modelJson({
-        parent: "society:block/juice_inserter",
+        parent: "society:block/kubejs/juice_inserter",
       });
     })
     .blockEntity((blockInfo) => {
@@ -27,7 +27,7 @@ StartupEvents.registry("block", (event) => {
     }).blockstateJson = {
     multipart: [
       {
-        apply: { model: "society:block/juice_inserter_particle" },
+        apply: { model: "society:block/kubejs/juice_inserter_particle" },
       },
     ].concat(getCardinalMultipartJsonBasic("juice_inserter")),
   };
@@ -52,6 +52,8 @@ global.runJuiceInserter = (blockInfo) => {
   const fermentationBarrel = global.getFermentingBarrel(level, level.getBlock(block.getPos()));
   if (!fermentationBarrel.id.equals("vinery:fermentation_barrel")) return;
   let barrelData = fermentationBarrel.getEntityData();
+  if (!barrelData) return;
+  if (!block.getEntityData()) return;
   const fluidData = block.getEntityData().ForgeData;
   if (!barrelData) return;
   if (Number(barrelData.FluidLevel) + 25 > 100) return;

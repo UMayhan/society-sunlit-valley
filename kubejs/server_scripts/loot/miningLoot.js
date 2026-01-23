@@ -417,29 +417,31 @@ LootJS.modifiers((e) => {
   );
   ["society:sparkstone_ore", "society:deepslate_sparkstone_ore"].forEach(
     (ore) => {
-      e.addBlockLootModifier(ore).pool((p) => {
-        p.not((n) =>
-          n.matchMainHand(ItemFilter.hasEnchantment("minecraft:silk_touch"))
-        );
-        p.randomChance(0.001).addLoot("society:the_spark_also_rises");
-      });
+      e.addBlockLootModifier(ore)
+        .hasAnyStage("mining_mastery")
+        .pool((p) => {
+          p.not((n) =>
+            n.matchMainHand(ItemFilter.hasEnchantment("minecraft:silk_touch"))
+          );
+          p.randomChance(0.001).addLoot("society:the_spark_also_rises");
+        });
     }
   );
 
   addAdditionalGeodeRoll(e, "excavator");
 
-  // Mastery Moon Pylon
+  // Mastery Moon Statue
   const remains = Ingredient.of("#society:fossilish").itemIds;
   const weightedRemains = [];
   remains.forEach((remain) =>
     weightedRemains.push(Item.of(remain).withChance(1))
   );
 
-  addWeightedMiningLootToAllOres(e, "pylon_remains", 0.05, remains);
-  addAdditionalGeodeRoll(e, "pylon_geode_roll");
+  addWeightedMiningLootToAllOres(e, "moon_remains", 0.05, remains);
+  addAdditionalGeodeRoll(e, "moon_geode_roll");
 
   e.addBlockLootModifier(overworldOres)
-    .hasAnyStage("pylon_extra_ore")
+    .hasAnyStage("moon_extra_ore")
     .modifyLoot(Ingredient.all, (itemStack) => {
       if (itemStack.hasTag("forge:raw_materials"))
         itemStack.setCount(itemStack.getCount() + 1);

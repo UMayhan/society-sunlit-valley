@@ -1,6 +1,7 @@
 console.info("[SOCIETY] addMiscRecipes.js loaded");
 
 ServerEvents.recipes((e) => {
+  e.shapeless(Item.of('society:invitation', '{type:{id:"society:carpenter"}}'), ['minecraft:crafting_table', "minecraft:wooden_axe"])
   e.shaped("atmospheric:blood_orange", ["mmm", "mom", "mmm"], {
     o: "atmospheric:orange",
     m: "farm_and_charm:minced_beef",
@@ -96,10 +97,6 @@ ServerEvents.recipes((e) => {
   e.shaped("meadow:cobbled_limestone", ["cs ", "sc "], {
     c: "minecraft:cobblestone",
     s: "meadow:alpine_salt",
-  });
-  e.shaped("minecraft:bundle", [" s ", " l "], {
-    s: "minecraft:string",
-    l: "minecraft:leather",
   });
   e.shaped("16x society:enriched_bone_meal", ["bbb", "bfb", "bbb"], {
     f: "farm_and_charm:fertilizer",

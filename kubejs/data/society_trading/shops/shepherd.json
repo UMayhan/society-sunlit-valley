@@ -1,8 +1,9 @@
 {
   "shop_id": "shepherd",
   "name": "shop.society_trading.shepherd",
-  "texture": "minecraft:textures/block/loom_front",
+  "texture": "dialog:textures/portraits/shepherd",
   "villager_profession": "shepherd",
+  "stage_required": "invited_shepherd",
   "selector_weight": -97,
   "jei_catalyst": { "item": "minecraft:loom" },
   "trades": [
@@ -145,11 +146,11 @@
         "count": 1
       },
       "request": {
-        "item": "numismatics:cog",
-        "count": 2
+        "item": "numismatics:crown",
+        "count": 1
       },
-      "numismatics_cost": 128,
-      "trade_id": "shepherd_chicken_spawn_egg_for_cog"
+      "numismatics_cost": 512,
+      "trade_id": "shepherd_chicken_spawn_egg_for_crown"
     },
     {
       "offer": {
