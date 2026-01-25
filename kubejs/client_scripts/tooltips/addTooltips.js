@@ -109,6 +109,10 @@ ItemEvents.tooltip((tooltip) => {
       tooltip: "Was once used to summon a beast",
     },
     {
+      item: "society:token_of_unity",
+      tooltip: "I love making mazes! I'm going to design the biggest maze ever!",
+    },
+    {
       item: "society:toy_train",
       tooltip: "« Limited to 2 passengers : ants »",
     },
@@ -266,7 +270,7 @@ ItemEvents.tooltip((tooltip) => {
     {
       item: "society:women_who_run_with_the_plushies",
       description:
-        "Plushies will start at 3 hearts of affection. Increases rates of high quality Plushies.",
+        "Plushies will start at 2 hearts of affection. Increases rates of high quality Plushies.",
     },
   ].forEach((book) => {
     tooltip.add(
@@ -283,7 +287,7 @@ ItemEvents.tooltip((tooltip) => {
       Text.translatable("tooltip.society.skill_book.use").green()
     );
   });
-    tooltip.addAdvanced("society:villager_invitation", (item, advanced, text) => {
+  tooltip.addAdvanced("society:villager_invitation", (item, advanced, text) => {
     if (item.nbt) {
       text.add(
         1,
@@ -844,6 +848,16 @@ ItemEvents.tooltip((tooltip) => {
   tooltip.add(
     "society:magic_knife",
     Text.translatable("item.society.magic_knife.description.warn").red()
+    "society:mood_scanner",
+    Text.translatable("item.society.mood_scanner.description").gray()
+  );
+  tooltip.add(
+    "society:mood_scanner",
+    Text.translatable("item.society.mood_scanner.description.warn").red()
+  );
+  tooltip.add(
+    "vintagedelight:deluxe_burger",
+    Text.translatable("tooltip.society.deluxe_burger").gray()
   );
   tooltip.add(
     "society:miracle_potion",
